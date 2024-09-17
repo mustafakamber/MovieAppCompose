@@ -16,7 +16,7 @@ class GetMovieDetailUseCase @Inject constructor(private val repository: MovieRep
         try {
             emit(Resource.Loading())
             val movieDetail = repository.getMovieDetail(imdbId)
-            if (movieDetail.Response.equals("True")) {
+            if (movieDetail.Response == "True") {
                 emit(Resource.Success(movieDetail.toMovieDetail()))
             } else {
                 emit(Resource.Error(message = "No movie found!"))
